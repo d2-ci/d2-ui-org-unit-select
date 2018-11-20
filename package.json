@@ -1,6 +1,5 @@
 {
   "name": "@dhis2/d2-ui-org-unit-select",
-  "version": "5.0.1",
   "description": "Org Unit Selection component for D2-UI",
   "main": "./index.js",
   "module": "./index.js",
@@ -24,7 +23,7 @@
     "test-ci": "jest --config=../../jest.config.js packages/org-unit-select"
   },
   "dependencies": {
-    "@dhis2/d2-ui-core": "5.0.1",
+    "@dhis2/d2-ui-core": "5.0.3",
     "babel-runtime": "^6.26.0",
     "material-ui": "^0.20.0",
     "prop-types": "^15.5.10",
@@ -38,5 +37,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "version": "5.0.3"
 }
