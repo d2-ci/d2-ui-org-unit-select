@@ -1,15 +1,52 @@
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import _Object$assign from 'babel-runtime/core-js/object/assign';
-import React from 'react';
-import PropTypes from 'prop-types';
-import log from 'loglevel';
-import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+'use strict';
 
-import { addToSelection, removeFromSelection } from './common';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _loglevel = require('loglevel');
+
+var _loglevel2 = _interopRequireDefault(_loglevel);
+
+var _RaisedButton = require('material-ui/RaisedButton/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _common = require('./common');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var style = {
     button: {
@@ -23,23 +60,23 @@ var style = {
         top: 46
     }
 };
-style.button1 = _Object$assign({}, style.button, { marginLeft: 0 });
+style.button1 = (0, _assign2.default)({}, style.button, { marginLeft: 0 });
 
 var OrgUnitSelectAll = function (_React$Component) {
-    _inherits(OrgUnitSelectAll, _React$Component);
+    (0, _inherits3.default)(OrgUnitSelectAll, _React$Component);
 
     function OrgUnitSelectAll(props, context) {
-        _classCallCheck(this, OrgUnitSelectAll);
+        (0, _classCallCheck3.default)(this, OrgUnitSelectAll);
 
-        var _this = _possibleConstructorReturn(this, (OrgUnitSelectAll.__proto__ || _Object$getPrototypeOf(OrgUnitSelectAll)).call(this, props, context));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (OrgUnitSelectAll.__proto__ || (0, _getPrototypeOf2.default)(OrgUnitSelectAll)).call(this, props, context));
 
         _this.state = {
             loading: false,
             cache: null
         };
 
-        _this.addToSelection = addToSelection.bind(_this);
-        _this.removeFromSelection = removeFromSelection.bind(_this);
+        _this.addToSelection = _common.addToSelection.bind(_this);
+        _this.removeFromSelection = _common.removeFromSelection.bind(_this);
 
         _this.handleSelectAll = _this.handleSelectAll.bind(_this);
         _this.handleDeselectAll = _this.handleDeselectAll.bind(_this);
@@ -49,7 +86,7 @@ var OrgUnitSelectAll = function (_React$Component) {
         return _this;
     }
 
-    _createClass(OrgUnitSelectAll, [{
+    (0, _createClass3.default)(OrgUnitSelectAll, [{
         key: 'handleSelectAll',
         value: function handleSelectAll() {
             var _this2 = this;
@@ -77,7 +114,7 @@ var OrgUnitSelectAll = function (_React$Component) {
                     _this2.props.onUpdateSelection(ous.slice());
                 }).catch(function (err) {
                     _this2.setState({ loading: false });
-                    log.error('Failed to load all org units:', err);
+                    _loglevel2.default.error('Failed to load all org units:', err);
                 });
             }
         }
@@ -109,16 +146,16 @@ var OrgUnitSelectAll = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
                 null,
-                React.createElement(RaisedButton, {
+                _react2.default.createElement(_RaisedButton2.default, {
                     style: style.button1,
                     label: this.getTranslation('select_all'),
                     onClick: this.handleSelectAll,
                     disabled: this.state.loading
                 }),
-                React.createElement(RaisedButton, {
+                _react2.default.createElement(_RaisedButton2.default, {
                     style: style.button,
                     label: this.getTranslation('deselect_all'),
                     onClick: this.handleDeselectAll,
@@ -127,23 +164,22 @@ var OrgUnitSelectAll = function (_React$Component) {
             );
         }
     }]);
-
     return OrgUnitSelectAll;
-}(React.Component);
+}(_react2.default.Component);
 
 OrgUnitSelectAll.propTypes = {
     // selected is an array of selected organisation unit IDs
-    selected: PropTypes.array.isRequired,
+    selected: _propTypes2.default.array.isRequired,
 
     // Whenever the selection changes, onUpdateSelection will be called with
     // one argument: The new array of selected organisation unit paths
-    onUpdateSelection: PropTypes.func.isRequired,
+    onUpdateSelection: _propTypes2.default.func.isRequired,
 
     // If currentRoot is set, only org units that are descendants of the
     // current root org unit will be added to or removed from the selection
-    currentRoot: PropTypes.object
+    currentRoot: _propTypes2.default.object
 };
 
-OrgUnitSelectAll.contextTypes = { d2: PropTypes.object.isRequired };
+OrgUnitSelectAll.contextTypes = { d2: _propTypes2.default.object.isRequired };
 
-export default OrgUnitSelectAll;
+exports.default = OrgUnitSelectAll;
