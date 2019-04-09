@@ -1,8 +1,29 @@
-import _Object$assign from 'babel-runtime/core-js/object/assign';
-import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
-import LinearProgress from 'material-ui/LinearProgress/LinearProgress';
-import { DropDown } from '@dhis2/d2-ui-core';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.renderControls = exports.renderDropdown = exports.handleChangeSelection = exports.removeFromSelection = exports.addToSelection = undefined;
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RaisedButton = require('material-ui/RaisedButton/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _LinearProgress = require('material-ui/LinearProgress/LinearProgress');
+
+var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
+
+var _d2UiCore = require('@dhis2/d2-ui-core');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var style = {
     button: {
@@ -16,7 +37,7 @@ var style = {
         top: 46
     }
 };
-style.button1 = _Object$assign({}, style.button, { marginLeft: 0 });
+style.button1 = (0, _assign2.default)({}, style.button, { marginLeft: 0 });
 
 function addToSelection(orgUnits) {
     var _this = this;
@@ -53,10 +74,10 @@ function handleChangeSelection(event) {
 }
 
 function renderDropdown(menuItems, label) {
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         { style: { position: 'relative', minHeight: 89 } },
-        React.createElement(DropDown, {
+        _react2.default.createElement(_d2UiCore.DropDown, {
             value: this.state.selection,
             menuItems: menuItems,
             onChange: this.handleChangeSelection,
@@ -70,17 +91,17 @@ function renderDropdown(menuItems, label) {
 function renderControls() {
     var disabled = this.state.loading || !this.state.selection;
 
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         { style: { position: 'absolute', display: 'inline-block', top: 24, marginLeft: 16 } },
-        this.state.loading && React.createElement(LinearProgress, { size: 0.5, style: style.progress }),
-        React.createElement(RaisedButton, {
+        this.state.loading && _react2.default.createElement(_LinearProgress2.default, { size: 0.5, style: style.progress }),
+        _react2.default.createElement(_RaisedButton2.default, {
             label: this.getTranslation('select'),
             style: style.button1,
             onClick: this.handleSelect,
             disabled: disabled
         }),
-        React.createElement(RaisedButton, {
+        _react2.default.createElement(_RaisedButton2.default, {
             label: this.getTranslation('deselect'),
             style: style.button,
             onClick: this.handleDeselect,
@@ -89,4 +110,8 @@ function renderControls() {
     );
 }
 
-export { addToSelection, removeFromSelection, handleChangeSelection, renderDropdown, renderControls };
+exports.addToSelection = addToSelection;
+exports.removeFromSelection = removeFromSelection;
+exports.handleChangeSelection = handleChangeSelection;
+exports.renderDropdown = renderDropdown;
+exports.renderControls = renderControls;
